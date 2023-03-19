@@ -48,8 +48,10 @@ class SuperheroeController extends Controller
 
 
         Superheroe::insert($datosSuperheroe);
-        return response() -> json($datosSuperheroe);
+        //return response() -> json($datosSuperheroe);
         //De esta manera se obtiene un token el cual contiene la información de nuestros envíos de formulario
+        return redirect('superheroe');
+
 
     }
 
@@ -74,7 +76,7 @@ class SuperheroeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Superheroe $id)
+    public function update(Request $request, $id)
     {
         //
         $datosSuperheroe = request() -> except('_token', '_method');

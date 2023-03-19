@@ -3,7 +3,7 @@
 
     @csrf
     {{method_field('PATCH')}}
-    @include('superheroeView.form')
+    @include('superheroeView.form');
 
 </form>
 
