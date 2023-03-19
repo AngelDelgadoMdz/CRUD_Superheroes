@@ -1,4 +1,6 @@
-Mostrar la lista de los Superheroes
+{{-- Mostrar la lista de los Superheroes --}}
+
+<a href="{{url('superheroe/create')}}">Registrar nuevo Superheroe</a>
 
 <table class="table table-light">
 
@@ -18,12 +20,22 @@ Mostrar la lista de los Superheroes
         @foreach ($superheroes as $superheroe)
         <tr>
             <td>{{$superheroe -> id}}</td>
-            <td>{{$superheroe -> foto}}</td>
+            <td>
+                <img src="{{asset('storage').'/'.$superheroe->foto}}" width="100" alt="" srcset="">
+                {{$superheroe -> foto}}
+            
+            </td>
             <td>{{$superheroe -> nombre_real}}</td>
             <td>{{$superheroe -> nombre_alias}}</td>
             <td>{{$superheroe -> informacion_adicional}}</td>
             
-            <td>Editar | 
+            <td>
+                
+
+                <a href="{{url('/superheroe/'.$superheroe->id.'/edit')}}">
+                    Editar 
+                </a>
+                | 
             
                 <form action="{{url('/superheroe/'.$superheroe->id)}}" method="post">
                     @csrf

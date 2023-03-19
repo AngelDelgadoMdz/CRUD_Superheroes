@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Superheroe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SuperheroeController extends Controller
 {
@@ -63,17 +64,36 @@ class SuperheroeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Superheroe $superheroe)
+    public function edit($id)
     {
         //
+        $superheroe=Superheroe::findOrFail($id);
+        return view('superheroeView.edit', compact('superheroe'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Superheroe $superheroe)
+    public function update(Request $request, Superheroe $id)
     {
         //
+        $datosSuperheroe = request() -> except('_token', '_method');
+
+        if($request -> hasFile('foto')){
+            //REcuperamos la información
+            $superheroe=Superheroe::findOrFail($id);
+            //Concatenamos
+            Storage::delete('public/'.$superheroe->foto);
+            //Borramos y actualizamos
+            $datosSuperheroe['foto'] = $request -> file('foto') -> store('uploads', 'public');
+        }
+
+
+        Superheroe::where('id','=',$id)->update($datosSuperheroe);
+
+        $superheroe=Superheroe::findOrFail($id);
+        return view('superheroeView.edit', compact('superheroe'));
+
     }
 
     /**

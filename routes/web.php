@@ -22,6 +22,8 @@ Route::get('/superheroe', function () {
     return view('superheroeView.index'); /**Accedemos a la vista index de la carpetae empleado */
 });
 
+//Route::get('/superheroe', [SuperheroeController::class, 'index']);
+
 Route::get('superheroe/create', [SuperheroeController::class, 'create']);
 
 Route::resource('superheroe', SuperheroeController::class);
