@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SuperheroeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/superheroe', function () {
+    return view('superheroeView.index'); /**Accedemos a la vista index de la carpetae empleado */
+});
+
+Route::get('superheroe/create', [SuperheroeController::class, 'create']);
+
+Route::resource('superheroe', SuperheroeController::class);
