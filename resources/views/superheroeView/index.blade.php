@@ -12,7 +12,7 @@
 
 
 
-        <a href="{{ url('superheroe/create') }}">Registrar nuevo Superheroe</a>
+        <a href="{{ url('superheroe/create') }}" class="btn btn-success m-3">Registrar nuevo Superheroe</a>
 
         <table class="table table-light">
 
@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{ $superheroe->id }}</td>
                         <td>
-                            <img src="{{ asset('storage') . '/' . $superheroe->foto }}" width="100" alt=""
+                            <img class="img-thumbnail img-fluid" src="{{ asset('storage') . '/' . $superheroe->foto }}" width="100" alt=""
                                 srcset="">
                             {{ $superheroe->foto }}
 
@@ -48,15 +48,14 @@
                         <td>
 
 
-                            <a href="{{ url('/superheroe/' . $superheroe->id . '/edit') }}">
+                            <a href="{{ url('/superheroe/' . $superheroe->id . '/edit') }}" class="btn btn-primary">
                                 Editar
                             </a>
-                            |
 
-                            <form action="{{ url('/superheroe/' . $superheroe->id) }}" method="post">
+                            <form action="{{ url('/superheroe/' . $superheroe->id) }}" class="d-inline" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <input type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
+                                <input type="submit" onclick="return confirm('¿Deseas borrar?')" class="btn btn-danger" value="Borrar">
 
                             </form>
                         </td>
