@@ -1,12 +1,18 @@
-Aquí vamos a crear superheroes
+{{-- Aquí vamos a crear superheroes --}}
+@extends('layouts.app')
 
-<!--Crear una ruta para enviar información a la url superheroe y utilizamos POST como método de store-->
-<!--De esta manera utilizamos el método store para pasar la información del formulario-->
-<form action="{{url('/superheroe')}}" method="post" enctype="multipart/form-data">
+@section('content')
+    <div class="container">
 
-    @csrf
-    @include('superheroeView.form')
 
-    
+        <!--Crear una ruta para enviar información a la url superheroe y utilizamos POST como método de store-->
+        <!--De esta manera utilizamos el método store para pasar la información del formulario-->
+        <form action="{{ url('/superheroe') }}" method="post" enctype="multipart/form-data">
 
-</form>
+            @csrf
+            @include('superheroeView.form', ['modo' => 'Crear'])
+
+
+        </form>
+    </div>
+@endsection

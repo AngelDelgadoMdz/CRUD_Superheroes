@@ -1,9 +1,15 @@
+{{-- => es el símbolo de igual --}}
+@extends('layouts.app')
 
-<form action="{{ url('/superheroe/'.$superheroe->id) }}" method="post" enctype="multipart/form-data">
+@section('content')
+    <div class="container">
 
-    @csrf
-    {{method_field('PATCH')}}
-    @include('superheroeView.form');
+        <form action="{{ url('/superheroe/' . $superheroe->id) }}" method="post" enctype="multipart/form-data">
 
-</form>
+            @csrf
+            {{ method_field('PATCH') }}
+            @include('superheroeView.form', ['modo' => 'Editar']);
 
+        </form>
+    </div>
+@endsection
