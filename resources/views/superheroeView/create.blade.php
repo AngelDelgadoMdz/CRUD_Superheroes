@@ -2,7 +2,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <style>
+        .bg-color {
+            background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+    <div class="container bg-color">
 
 
         <!--Crear una ruta para enviar información a la url superheroe y utilizamos POST como método de store-->
